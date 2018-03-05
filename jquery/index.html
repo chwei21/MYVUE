@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>banner</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<div id="banner">
+	<div class="img">
+		<img src="images/banner1.jpg" alt="轮播器第一张" />
+		<img src="images/banner2.jpg" alt="轮播器第二张" />
+		<img src="images/banner3.jpg" alt="轮播器第三张" />
+	</div>
+	<ul>
+		<li>●</li>
+		<li>●</li>
+		<li>●</li>
+	</ul>
+	<span></span>
+	<strong></strong>
+	<!--<div id="prev">prev</div>
+	<div id='next'>next</div>-->
+</div>
+<script>
+$(document).ready(function(){
+(function(){
+		$('#banner .img img').eq(0).css('opacity','1').siblings().css('opacity','0');
+		$('#banner ul li').eq(0).css('color','#333');
+		$('#banner strong').html($('#banner .img img').eq(0).attr('alt'));
+		
+		var banner_index=1;
+		var banner_timer=setInterval(banner_fn,3000);
+		
+		$('#banner ul li').hover(function(){
+			clearInterval(banner_timer);
+			banner($(this));
+		},function(){
+			banner_index=$(this).index()+1;
+			banner_timer=setInterval(banner_fn,3000);
+		});
+		
+		function banner(obj,prev){
+			obj.css('color','#333').siblings().css('color','#999');
+			$('#banner strong').html($('#banner .img img').eq(obj.index()).attr('alt'));
+			$('#banner .img img').eq(prev).animate({
+				opacity:'0'
+			},500);
+			$('#banner .img img').eq(obj.index()).animate({
+				opacity:'1'
+			},500).siblings().animate({opacity:'0'},500);
+		};
+		function banner_fn(){
+			if(banner_index>=$('#banner ul li').length)banner_index=0;
+				banner($('#banner ul li').eq(banner_index),banner_index==0?$('#banner ul li').length-1:banner_index-1)
+			banner_index++;
+		};
+	
+	
+	
+	//ajax
+})();
+});
+</script>
+</body>
+</html>
