@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-let和const</title>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script type="text/html">
+    // let 和 const 声明 变量和常量  var
+
+    // 01-作用域只局限于当前代码块
+   /* {
+        var str = '张三';
+        console.log(str);
+
+        let str1 = '李四';
+        console.log(str1);
+    }
+
+    console.log('++++++' + str);
+    console.log('-----' + str1);*/
+
+   // 02-使用let申明的变量作用域不会被提升
+    /*{
+        console.log(str1); // undefined
+        var str1 = '张三';
+
+        var str1;
+        console.log(str1); // undefined
+        str1 = '张三';
+    }*/
+
+   /* {
+        console.log(str);
+        let str = '李四';
+    }*/
+
+   // 03-在相同的作用域下不能申明相同的变量
+   /* {
+        var str1 = '张三';
+        var str1 = '李四';
+        console.log(str1);
+
+        let str2 = '王五';
+        let str2 = '赵六';
+        console.log(str2);
+    }*/
+
+   // 04-for循环体现let的父子作用域
+
+   /*
+   var btns = document.querySelectorAll('button');
+    for(var i=0; i<btns.length; i++){
+        btns[i].onclick = function () {
+            alert('点击了第' + i + '个按钮');
+        }
+    }
+    */
+   /*
+    var btns = document.querySelectorAll('button');
+    for(var i=0; i<btns.length; i++){
+        (function (i) {
+            btns[i].onclick = function () {
+                alert('点击了第' + i + '个按钮');
+            }
+        })(i);
+    }*/
+
+    /*let btns = document.querySelectorAll('button');
+    for(let i=0; i<btns.length; i++){
+        btns[i].onclick = function () {
+            alert('点击了第' + i + '个按钮');
+        }
+    }*/
+
+    for(let i=0; i<5; i++){
+        let i = 20;
+        console.log(i);
+    }
+</script>
+
+<script>
+    // 01-只在当前的代码块中有效
+    /*{
+        const a = 'zhangsan';
+        const a = 'lisi';
+        console.log(a);
+    }*/
+    // console.log(a);
+
+    // 02-作用域不会被提升
+
+    // 03-不能重复申明
+
+    // 04-申明的常量必须赋值
+    /*{
+        const name;
+        name = 'zhangsan';
+        console.log(name);
+    }*/
+
+    /*{
+        const name = 'zhangsan';
+        name = 'lisi';
+        console.log(name);
+    }*/
+
+    const obj = {name: '张三'};
+    console.log(obj);
+
+    obj.name = '李四';
+    console.log(obj);
+</script>
+</body>
+</html>

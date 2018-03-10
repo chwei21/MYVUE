@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE.js</title>
+    <style>
+        fieldset{
+            width: 500px;
+            border: 2px solid orangered;
+            margin: 50px auto;
+        }
+        fieldset input{
+            height: 30px;
+            margin: 10px 0;
+        }
+        table{
+            width: 520px;
+            margin: 20px auto;
+            border: 2px solid orangered;
+        }
+        table thead tr{
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <fieldset>
+        <legend>学生录入系统</legend>
+        <div>
+            <label>姓名：</label>
+            <input type="text" placeholder="请输入姓名" v-model="newMsg.name"/>
+        </div>
+        <div>
+            <label>年龄：</label>
+            <input type="number" placeholder="请输入年龄" v-model="newMsg.age"/>
+        </div>
+        <div>
+            <label>性别：</label>
+            <select v-model="newMsg.sex">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+            <label>姓名：</label>
+            <input type="text" placeholder="请输入手机号" v-model="newMsg.phone"/>
+        </div>
+        <button @click="addMsg()">添加信息</button>
+    </fieldset>
+
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>手机</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(msg,index) in messger">
+                <th>{{msg.name}}</th>
+                <th>{{msg.age}}</th>
+                <th>{{msg.sex}}</th>
+                <th>{{msg.phone}}</th>
+                <th><button @click="deleteMsg(index)">删除</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="js/vue.min.js"></script>
+
+<script>
+    let app=new Vue({
+        el:'#app',
+        data:{
+            messger:[
+                {name:'张三',age:'20',sex:'男',phone:'13509098908'},
+                {name:'里斯',age:'28',sex:'女',phone:'13509098937'},
+                {name:'加尔松',age:'22',sex:'男',phone:'13509098090'},
+            ],
+            newMsg:{name:'',age:'',sex:'男',phone:''}
+        },
+        methods:{
+            addMsg(){
+                if(this.newMsg.name===''){
+                    alert('0');
+                    return
+                }
+                if(this.newMsg.age===''){
+                    alert('1');
+                    return
+                }
+                if(this.newMsg.phone===''){
+                    alert('2');
+                    return
+                }
+                this.messger.unshift(this.newMsg);
+
+                this.newMsg={name:'',age:'',sex:'男',phone:''}
+            },
+            deleteMsg(index){
+                this.messger.splice(index,1);
+            }
+        }
+    })
+</script>
+</body>
+</html>

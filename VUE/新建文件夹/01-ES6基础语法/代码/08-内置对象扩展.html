@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-内置对象扩展</title>
+    <style>
+        .test{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+</ul>
+
+<script>
+    // 1. 模板字符串
+    // let html = '<html><head></head><body><p>今天的天气很好!</p><div>适合敲代码!</div></body></html>';
+   /* let str = '适合敲代码!';
+    let className = 'test';
+    let html = `<html>
+                   <head></head>
+                   <body>
+                        <p>今天的天气很好!</p>
+                        <div class="${className}">${str}</div>
+                   </body>
+                </html>`;*/
+    // console.log(html);
+
+    // 2. 数组的扩展
+    // Array.from
+     // let allLis = document.querySelectorAll('li');
+    /*console.log(allLis);
+    console.log(Array.isArray(allLis));
+
+    console.log(Array.from(allLis));
+    console.log(Array.isArray(Array.from(allLis)));*/
+
+    // Array.of
+    /*console.log(Array.of(1, 2, 3, 4));
+    console.log(Array.of('张三', '李四', '王五'));*/
+
+    // 3. 对象的扩展
+    // key 和 value是一样的,写一个就够了
+    /*let name = '张三';
+    let age  = 18;
+    let person = {
+        name,
+        age
+    };*/
+    // console.log(obj);
+
+    // Object.assign()
+    let obj1 = {name: '张三'};
+    let obj2 = {age: 18};
+    let obj3 = {sex: '男'};
+    let obj4 = {friends: '李四'};
+    let obj = {};
+    Object.assign(obj, obj1, obj2, obj3, obj4);
+    // console.log(obj);
+
+    // 延展操作符
+    let str = '今天的天气很好!';
+    let strArr = [...str];
+    // console.log(strArr);
+
+   /* let student = {
+        name: '张三',
+        age: 18,
+        sex: '男'
+    }
+
+    <Person {...student} />*/
+
+   // 面试
+   let myArr = [1, 2, 10, '张三', 20, 2, 1];
+    // console.log(new Set(myArr));
+    console.log([...new Set(myArr)]);
+</script>
+</body>
+</html>

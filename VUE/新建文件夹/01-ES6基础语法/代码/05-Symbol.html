@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-Symbol</title>
+</head>
+<body>
+
+<script>
+
+    // 1. 定义
+    let str1 = Symbol();
+    let str2 = Symbol();
+
+    /*console.log(str1 === str2);
+    console.log(typeof str1);
+    console.log(typeof str2);*/
+
+    // 2.描述
+    let str3 = Symbol('name');
+    let str4 = Symbol('name');
+   /* console.log(str3);
+    console.log(str4);
+    console.log(str3 === str4);*/
+
+   // 3. 对象的属性名
+    const obj = {};
+    /*obj.name = '张三';
+    obj.name = '李四';*/
+    obj[Symbol('name')] = '张三';
+    obj[Symbol('name')] = '李四';
+
+    console.log(obj);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-Vue的常用指令-v-bind-补充</title>
+    <style>
+        .active{
+            background-color: orangered;
+            font-size: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p v-for="(college, index) in colleges" :class="index === activeIndex ? 'active': ''">
+            {{college}}
+        </p>
+        <p :style="{color: fontColor}">今天的天气很好!</p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+           el: '#app',
+            data: {
+               colleges: [
+                   'iOS学院',
+                   'Java学院',
+                   'HTML5学院',
+                   'UI学院',
+                   'VR学院'
+               ],
+                activeIndex: 0,
+                fontColor: 'green'
+            }
+        });
+    </script>
+</body>
+</html>

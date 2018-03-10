@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的常用指令-v-once</title>
+</head>
+<body>
+    <div id="app">
+        <p v-once>原始值: {{msg}}</p>
+        <p>后面的: {{msg}}</p>
+        <input type="text" v-model="msg">
+    </div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+       el: '#app',
+        data: {
+           msg: '今天的天气很好!'
+        }
+    });
+</script>
+</body>
+</html>
